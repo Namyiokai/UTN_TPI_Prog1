@@ -229,7 +229,7 @@ def opcion_filtrar_por_continente():
 def opcion_filtrar_por_poblacion():
     #Filtra países por rango de población.
     global paises
-    print("\n--- FILTRAR POR RANGO DE POBLACIÓN ---")
+    print("Filtrar por rango de población")
 
     if not paises:
         print("No hay países cargados.")
