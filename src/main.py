@@ -20,7 +20,7 @@ from utilidades import (
 )
 
 # Ruta del archivo CSV (se puede modificar según necesidad)
-RUTA_CSV = '/content/data/paises.csv'
+RUTA_CSV = 'data/paises.csv'
 
 # Variable global para almacenar los datos en memoria
 paises = []
