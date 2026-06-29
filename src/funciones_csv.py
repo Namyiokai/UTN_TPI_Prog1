@@ -23,7 +23,7 @@ def cargar_datos(ruta_archivo):
 
     try:
         with open(ruta_archivo, 'r', encoding='utf-8') as archivo:
-            lector = csv.DictReader(archivo) #Lee el CSV y automáticamente usa la primera fila como nombres de columnas. Cada fila se vuelve en un diccionario. 
+            lector = csv.DictReader(archivo) #Lee el CSV y automáticamente usa la primera fila como nombres de columnas. Cada fila se vuelve en un diccionario.
 
             # Validar que las columnas necesarias estén presentes
             columnas_requeridas = {'nombre', 'poblacion', 'superficie', 'continente'}
@@ -40,8 +40,8 @@ def cargar_datos(ruta_archivo):
                     # Usamos int() y manejamos posibles errores de formato
                     pais = {
                         'nombre': fila['nombre'].strip(),
-                        'poblacion': int(fila['poblacion'].strip()), 
-                        'superficie': int(float(fila['superficie'].strip())),  
+                        'poblacion': int(fila['poblacion'].strip()),
+                        'superficie': int(float(fila['superficie'].strip())),
                         'continente': fila['continente'].strip()
                     }
                     paises.append(pais)
@@ -107,4 +107,3 @@ def guardar_datos(ruta_archivo, paises):
     except Exception as e:
         print(f"Error inesperado al guardar: {e}")
         return False
-    
