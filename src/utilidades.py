@@ -32,12 +32,23 @@ def validar_nombre_pais(nombre):
     """
     Valida que el nombre de un país contenga solo letras y espacios, y no esté vacío.
     """
+    # Primero, validar que el nombre no esté vacío, eliminando espacios al inicio y al final
     if not nombre or nombre.strip() == "":
         return False, "El nombre del país no puede estar vacío."
-    # Usar una expresión regular para permitir solo letras y espacios
-    if not re.fullmatch(r"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", nombre.strip()):
-        return False, "El nombre del país solo puede contener letras y espacios."
-    return True, nombre.strip()
+
+    nombre_limpio = nombre.strip()
+    
+    # Iterar sobre cada carácter del nombre limpio
+    for caracter in nombre_limpio:
+        # Verificar si el carácter no es una letra Y no es un espacio
+        # .isalpha() verifica si el carácter es una letra (maneja acentos y 'ñ' en Python 3)
+        # .isspace() verifica si el carácter es un espacio en blanco
+        if not (caracter.isalpha() or caracter.isspace()):
+            # Si encontramos algo que no es letra ni espacio, el nombre no es válido
+            return False, "El nombre del país solo puede contener letras y espacios."
+            
+    # Si el bucle termina, significa que todos los caracteres eran válidos
+    return True, nombre_limpio
 
 
 def buscar_pais_por_nombre(paises, texto_busqueda):
