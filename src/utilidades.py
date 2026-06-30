@@ -1,4 +1,6 @@
 
+import re # Importar la librería re para expresiones regulares
+
 def validar_entero_positivo(valor):
     try:
         # Convertir a entero
@@ -25,6 +27,17 @@ def validar_texto_no_vacio(texto):
     if not texto or texto.strip() == "":
         return False, "El campo no puede estar vacío."
     return True, texto.strip()
+
+def validar_nombre_pais(nombre):
+    """
+    Valida que el nombre de un país contenga solo letras y espacios, y no esté vacío.
+    """
+    if not nombre or nombre.strip() == "":
+        return False, "El nombre del país no puede estar vacío."
+    # Usar una expresión regular para permitir solo letras y espacios
+    if not re.fullmatch(r"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", nombre.strip()):
+        return False, "El nombre del país solo puede contener letras y espacios."
+    return True, nombre.strip()
 
 
 def buscar_pais_por_nombre(paises, texto_busqueda):

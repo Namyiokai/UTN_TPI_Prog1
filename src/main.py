@@ -9,6 +9,7 @@ from funciones_csv import cargar_datos, guardar_datos
 from utilidades import (
     validar_entero_positivo,
     validar_texto_no_vacio,
+    validar_nombre_pais, # Importar la nueva función de validación
     buscar_pais_por_nombre,
     mostrar_lista_paises,
     mostrar_pais,
@@ -54,8 +55,8 @@ def opcion_agregar_pais():
     global paises
     print("Agregar nuevo país")
 
-    # Solicitar y validar nombre
-    nombre_valido, nombre = validar_texto_no_vacio(input("Ingrese el nombre del país: "))
+    # Solicitar y validar nombre usando la nueva función
+    nombre_valido, nombre = validar_nombre_pais(input("Ingrese el nombre del país: "))
     if not nombre_valido:
         print(f"Error: {nombre}")
         return
